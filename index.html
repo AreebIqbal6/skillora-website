@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skillora</title>
+  <meta name="description" content="Skillora builds custom software, websites, and apps. No fluff, just code.">
+  <script>
+    if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="icon" type="image/png" href="images/skillora_logo.png">
+</head>
+<body>
+
+<!-- Aurora background canvas -->
+<canvas id="aurora" class="aurora-canvas"></canvas>
+
+<!-- Global Film Grain Noise -->
+<div class="noise-overlay"></div>
+
+
+
+<!-- Floating gradient orbs (parallax via GSAP) -->
+<div class="orb orb-1" data-speed="0.3"></div>
+<div class="orb orb-2" data-speed="0.5"></div>
+<div class="orb orb-3" data-speed="0.2"></div>
+<div class="orb orb-4" data-speed="0.4"></div>
+<div class="orb orb-5" data-speed="0.6"></div>
+
+<!-- Hero glow -->
+<div class="hero-glow"></div>
+
+<div class="cur" id="cur"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap" style="position: relative; justify-content: center;">
+    <div class="nav-pill">
+      <a href="#" class="nav-logo">
+        <img src="images/skillora_logo.png" alt="Skillora Logo" class="nav-logo-img">Skillora
+      </a>
+      <div class="nav-mid" id="navMid">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="nav-cta" data-magnetic>Let's Talk</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap hero-inner">
+    <h1>
+      <span class="hero-line"><span data-gsap="line">We don't do</span></span>
+      <span class="hero-line"><span data-gsap="line"><span class="t-blue">fluff.</span> We just write</span></span>
+      <span class="hero-line"><span data-gsap="line"><span class="t-stroke">good code.</span></span></span>
+    </h1>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="tick">
+  <div class="tick-track">
+    <span class="tick-item">Web Development <span class="tick-sep"></span></span>
+    <span class="tick-item">Mobile Apps <span class="tick-sep"></span></span>
+    <span class="tick-item">UI/UX <span class="tick-sep"></span></span>
+    <span class="tick-item">SEO <span class="tick-sep"></span></span>
+    <span class="tick-item">Branding <span class="tick-sep"></span></span>
+    <span class="tick-item">E-Commerce <span class="tick-sep"></span></span>
+    <span class="tick-item">Lead Gen <span class="tick-sep"></span></span>
+    <span class="tick-item">Web Development <span class="tick-sep"></span></span>
+    <span class="tick-item">Mobile Apps <span class="tick-sep"></span></span>
+    <span class="tick-item">UI/UX <span class="tick-sep"></span></span>
+    <span class="tick-item">SEO <span class="tick-sep"></span></span>
+    <span class="tick-item">Branding <span class="tick-sep"></span></span>
+    <span class="tick-item">E-Commerce <span class="tick-sep"></span></span>
+    <span class="tick-item">Lead Gen <span class="tick-sep"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-top" data-gsap="fade">
+      <div>
+        <div class="sec-tag">Services</div>
+        <h2 class="sec-h">What we actually<br><span class="dim">do</span></h2>
+      </div>
+      <p class="sec-p">No buzzwords. No 'synergy'. Just the things we've shipped hundreds of times.</p>
+    </div>
+    <div class="bento" data-gsap="stagger">
+      <div class="b-card w2" data-hover>
+        <h3>Web Development</h3>
+        <p>Sites that load instantly and don't break. Custom-built from scratch.</p>
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      </div>
+      <div class="b-card" data-hover>
+        <h3>Mobile Apps</h3>
+        <p>Native and cross-platform apps built to withstand real-world usage.</p>
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+      </div>
+      <div class="b-card" data-hover>
+        <h3>UI/UX Design</h3>
+        <p>Interfaces that make sense. Simple, intuitive, and clean.</p>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+      </div>
+      <div class="b-card" data-hover>
+        <h3>SEO & Growth</h3>
+        <p>Real traffic. No black-hat tricks or vanity metrics.</p>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      </div>
+      <div class="b-card" data-hover>
+        <h3>Branding</h3>
+        <p>Visual identities that make your product look as good as it functions.</p>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      </div>
+      <div class="b-card w3" data-hover>
+        <h3>E-Commerce</h3>
+        <p>Stores optimized for conversion. Zero friction from cart to checkout.</p>
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="sec-line"></div></div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy" data-gsap="fade">
+        <div class="sec-tag">About</div>
+        <h2>Most agencies are <span class="dim">slow, bloated, and overpriced.</span></h2>
+        <p>We work lean. You get senior engineers directly, without paying for a fancy office or a project manager's salary. Over 250 projects shipped.</p>
+        <p>We figure out what you need, write the code, and keep it running.</p>
+      </div>
+      <div data-gsap="fade">
+        <div class="m-grid">
+          <div class="m-box"><div class="v"><span class="counter" data-target="100">0</span><span>+</span></div><div class="l">Projects Delivered</div></div>
+          <div class="m-box"><div class="v"><span class="counter" data-target="20">0</span><span>+</span></div><div class="l">Industries Served</div></div>
+          <div class="m-box"><div class="v"><span class="counter" data-target="300">0</span><span>%</span></div><div class="l">ROI</div></div>
+          <div class="m-box"><div class="v"><span class="counter" data-target="40">0</span><span>%</span></div><div class="l">Cost Efficiency</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="sec-line"></div></div>
+
+<!-- WORK -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-top" data-gsap="fade">
+      <div>
+        <div class="sec-tag">Work</div>
+        <h2 class="sec-h">Recent<br><span class="dim">work</span></h2>
+      </div>
+      <div class="sec-p-row">
+        <p class="sec-p">Stuff we actually shipped into production.</p>
+        <div class="w-arrows">
+          <button class="w-arrow" id="workPrev" data-hover aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+          <button class="w-arrow" id="workNext" data-hover aria-label="Next"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="work-scroll" id="workScroll">
+    <div class="w-card" data-hover>
+      <div class="w-card-bg" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%), url('images/work_claudia_alves.png') center/cover no-repeat;">
+      </div>
+      <div class="w-card-info"><span class="w-card-tag">Organic Skincare</span><h3 class="w-card-title">Claudia Alves</h3></div>
+    </div>
+    <div class="w-card" data-hover>
+      <div class="w-card-bg" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%), url('images/work_athera_house.png') center/cover no-repeat;">
+      </div>
+      <div class="w-card-info"><span class="w-card-tag">Architecture</span><h3 class="w-card-title">Athera House</h3></div>
+    </div>
+    <div class="w-card" data-hover>
+      <div class="w-card-bg" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%), url('images/work_studio_shodwe.png') center/cover no-repeat;">
+      </div>
+      <div class="w-card-info"><span class="w-card-tag">Digital Agency</span><h3 class="w-card-title">Studio Shodwe</h3></div>
+    </div>
+    <div class="w-card" data-hover>
+      <div class="w-card-bg" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%), url('images/work_yummy_burgers.png') center/cover no-repeat;">
+      </div>
+      <div class="w-card-info"><span class="w-card-tag">Restaurant</span><h3 class="w-card-title">Yummy Burgers</h3></div>
+    </div>
+    <div class="w-card" data-hover>
+      <div class="w-card-bg" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%), url('images/work_chaos_fashion.png') center/cover no-repeat;">
+      </div>
+      <div class="w-card-info"><span class="w-card-tag">Fashion Brand</span><h3 class="w-card-title">Chaos</h3></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="sec-line"></div></div>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-top" data-gsap="fade">
+      <div>
+        <div class="sec-tag">Process</div>
+        <h2 class="sec-h">How we<br><span class="dim">work</span></h2>
+      </div>
+    </div>
+    <div data-gsap="stagger-lines">
+      <div class="proc-item" data-hover><span class="idx">01</span><h3>Discovery</h3><p>You tell us the problem. We give you a straight answer.</p></div>
+      <div class="proc-item" data-hover><span class="idx">02</span><h3>Architecture & Design</h3><p>We map out the architecture and interface before touching code.</p></div>
+      <div class="proc-item" data-hover><span class="idx">03</span><h3>Development</h3><p>We write clean, tested code. No shortcuts.</p></div>
+      <div class="proc-item" data-hover><span class="idx">04</span><h3>Launch & Maintain</h3><p>We push to production and stick around to maintain it.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="sec-line"></div></div>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="testimonials">
+  <div class="wrap">
+    <div class="sec-top" data-gsap="fade">
+      <div>
+        <div class="sec-tag">Reviews</div>
+        <h2 class="sec-h">Don't take our word <span class="dim">for it</span></h2>
+      </div>
+    </div>
+    <div class="t-grid" data-gsap="stagger">
+      <div class="t-card" data-hover>
+        <div class="t-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+        <blockquote>Other agencies turned this project down. Skillora didn't just take it on — they made the app better than what I'd originally imagined.</blockquote>
+        <div class="t-foot"><div class="t-av">JC</div><div><div class="t-name">James Carter</div><div class="t-role">GoFit — Australia</div></div></div>
+      </div>
+      <div class="t-card" data-hover>
+        <div class="t-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+        <blockquote>40% more sales since the new store went live. The checkout just works — no friction, no confusion.</blockquote>
+        <div class="t-foot"><div class="t-av">AK</div><div><div class="t-name">Alisha Khan</div><div class="t-role">Velvet Vogue — UAE</div></div></div>
+      </div>
+      <div class="t-card" data-hover>
+        <div class="t-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+        <blockquote>I've burned money on three agencies before this. Skillora was the first team that didn't over-promise and under-deliver.</blockquote>
+        <div class="t-foot"><div class="t-av">MW</div><div><div class="t-name">Marcus Weber</div><div class="t-role">Weber Logistics — Germany</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="sec-line"></div></div>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-top" data-gsap="fade">
+      <div>
+        <div class="sec-tag">FAQ</div>
+        <h2 class="sec-h">The stuff people<br>usually <span class="dim">ask</span></h2>
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">What exactly does Skillora do?<span class="faq-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-text">We're an engineering and design team. We build apps, websites, and systems.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How much is this going to cost me?<span class="faq-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-text">We give flat-rate quotes based on scope. No surprises.</div></div></div>
+      <div class="faq-item"><button class="faq-q">I'm a startup with no budget. Can we work together?<span class="faq-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-text">We work with budgets of all sizes, but we don't work for equity alone.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What's your timeline like?<span class="faq-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-text">Typical site: 3-6 weeks. Mobile app: 8-12 weeks. We hit our deadlines.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do you vanish after launch?<span class="faq-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-text">No. We maintain what we build.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-left" data-gsap="fade">
+        <div class="sec-tag">Contact</div>
+        <h2>Let's figure out<br>your next move</h2>
+        <p>Tell us what you're working on. We respond within 24 hours.</p>
+        <div>
+          <div class="ct-d"><div class="ct-d-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><small>Email</small><a href="mailto:info@skilloraofficial.com">info@skilloraofficial.com</a></div></div>
+          <div class="ct-d"><div class="ct-d-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.11 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><small>Phone</small><a href="tel:+923001234567">+92 300 123 4567</a></div></div>
+          <div class="ct-d"><div class="ct-d-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><small>Location</small><p>Remote — worldwide</p></div></div>
+        </div>
+      </div>
+      <form class="ct-form" id="contactForm" data-gsap="fade" action="https://formsubmit.co/info@skilloraofficial.com" method="POST">
+        <div class="ct-row"><div class="ct-f"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div><div class="ct-f"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@company.com" required></div></div>
+        <div class="ct-f"><label for="subject">Subject</label><input type="text" id="subject" name="_subject" placeholder="What's this about?"></div>
+        <div class="ct-f"><label for="message">Tell us more</label><textarea id="message" name="message" placeholder="What are you building?" required></textarea></div>
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="btn-w" data-hover data-magnetic>Send message <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a href="#" class="nav-logo">
+          <img src="images/skillora_logo.png" alt="Skillora Logo" class="nav-logo-img">Skillora
+        </a>
+        <p>Software that works. No fluff.</p>
+        <div class="ft-soc">
+          <a href="https://www.facebook.com/skilloraofficialDigital/?rdid=UnMOhC8ETYaUmbbV" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/skillorallc?igsh=bjFpYnhuamViMDMx" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.75,2C4.58,2 2,4.58 2,7.75V16.25C2,19.42 4.58,22 7.75,22H16.25C19.42,22 22,19.42 22,16.25V7.75C22,4.58 19.42,2 16.25,2H7.75ZM12,7C14.76,7 17,9.24 17,12C17,14.76 14.76,17 12,17C9.24,17 7,14.76 7,12C7,9.24 9.24,7 12,7ZM17.25,5.5C17.94,5.5 18.5,6.06 18.5,6.75C18.5,7.44 17.94,8 17.25,8C16.56,8 16,7.44 16,6.75C16,6.06 16.56,5.5 17.25,5.5ZM12,9C10.35,9 9,10.35 9,12C9,13.65 10.35,15 12,15C13.65,15 15,13.65 15,12C15,10.35 13.65,9 12,9Z"/></svg></a>
+          <a href="https://www.linkedin.com/in/skillora-unofficial-5724973a3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>Services</h4><a href="#services">Web Dev</a><a href="#services">Mobile Apps</a><a href="#services">UI/UX</a><a href="#services">SEO</a></div>
+      <div class="ft-col"><h4>Company</h4><a href="#about">About</a><a href="#work">Work</a><a href="#testimonials">Reviews</a><a href="#faq">FAQ</a></div>
+      <div class="ft-col"><h4>Get in touch</h4><a href="mailto:info@skilloraofficial.com">Email us</a><a href="tel:+923001234567">Call us</a><a href="#contact">Free quote</a></div>
+    </div>
+    <div class="ft-btm">
+      <span>&copy; 2026 Skillora</span>
+      <div class="ft-legal">
+        <a href="#" id="openPrivacy">Privacy Policy</a>
+        <a href="#" id="openTerms">Terms of Service</a>
+      </div>
+      <span>Built by Skillora</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================
+     PRIVACY POLICY MODAL
+============================= -->
+<div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="closePrivacy" aria-label="Close">&times;</button>
+    <h2 id="privacyTitle">Privacy Policy</h2>
+    <p class="modal-date">Last updated: July 2025</p>
+    <div class="modal-body">
+      <h3>1. Information We Collect</h3>
+      <p>We collect information you provide directly to us when you fill out our contact form, including your name, email address, and message content. We do not collect data passively beyond standard server logs.</p>
+      <h3>2. How We Use Your Information</h3>
+      <p>We use the information collected solely to respond to your enquiries and provide the services you request. We do not sell, trade, or share your personal data with third parties for marketing purposes.</p>
+      <h3>3. Cookies</h3>
+      <p>Our website uses minimal cookies strictly necessary for site functionality and to remember your preference for accepting cookies. We do not use tracking or advertising cookies.</p>
+      <h3>4. Data Retention</h3>
+      <p>We retain contact form submissions for up to 12 months to support our communications with you. You may request deletion of your data at any time by emailing us.</p>
+      <h3>5. Your Rights</h3>
+      <p>You have the right to access, correct, or delete your personal data. Contact us at <a href="mailto:info@skilloraofficial.com">info@skilloraofficial.com</a> to exercise these rights.</p>
+      <h3>6. Security</h3>
+      <p>We implement appropriate technical measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
+      <h3>7. Contact</h3>
+      <p>Questions? Email us at <a href="mailto:info@skilloraofficial.com">info@skilloraofficial.com</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+     TERMS OF SERVICE MODAL
+============================= -->
+<div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="closeTerms" aria-label="Close">&times;</button>
+    <h2 id="termsTitle">Terms of Service</h2>
+    <p class="modal-date">Last updated: July 2025</p>
+    <div class="modal-body">
+      <h3>1. Acceptance</h3>
+      <p>By accessing and using the Skillora website, you accept and agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>
+      <h3>2. Services</h3>
+      <p>Skillora provides software development, web design, and digital marketing services. All project scopes, timelines, and deliverables are defined in individual project agreements signed before work commences.</p>
+      <h3>3. Intellectual Property</h3>
+      <p>Upon full payment, all custom-built code and assets created specifically for your project transfer to you. Skillora retains ownership of any pre-existing tools, libraries, or frameworks used in the build.</p>
+      <h3>4. Payment</h3>
+      <p>Projects are billed as agreed in individual contracts. Standard terms are 50% upfront and 50% on delivery. Late payments may incur a pause in service delivery.</p>
+      <h3>5. Limitation of Liability</h3>
+      <p>Skillora is not liable for indirect, incidental, or consequential damages arising from the use of our services. Our total liability is limited to the amount paid for the specific service in question.</p>
+      <h3>6. Governing Law</h3>
+      <p>These terms are governed by applicable law. Any disputes shall be resolved through good-faith negotiation before any formal legal proceedings.</p>
+      <h3>7. Changes</h3>
+      <p>We reserve the right to update these terms at any time. Continued use of our website after changes constitutes acceptance of the new terms.</p>
+      <h3>8. Contact</h3>
+      <p>Questions? Email us at <a href="mailto:info@skilloraofficial.com">info@skilloraofficial.com</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================
+     COOKIE CONSENT BANNER
+============================= -->
+<div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie consent">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <p>We use cookies to ensure you get the best experience on our site. <a href="#" id="cookiePrivacyLink">Learn more</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-decline" id="cookieDecline">Decline</button>
+      <button class="cookie-accept" id="cookieAccept">Accept Cookies</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating CTA (Mobile) -->
+<a href="#contact" class="floating-cta" aria-label="Let's Talk">
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+</a>
+
+<!-- GSAP + ScrollTrigger + Lenis -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js?v=3"></script>
+</body>
+</html>
